@@ -50,5 +50,23 @@ module.exports = (db) => {
         );
     });
 
+    // DELETE /tartans/:id
+    router.delete('/:id', (req, res) => {
+        const tartanId = req.params.id;
+
+        db.query('DELETE FROM tartans WHERE id = ?', [tartanId], (err, result) => {
+            if (err) {
+                console.error('Error deleting tartan:', err);
+                return res.status(500).json({ error: 'Internal server error' });
+            }
+
+            if (result.affectedRows === 0) {
+                return res.status(404).json({ error: 'Tartan not found' });
+            }
+
+            res.status(200).json({ message: 'Tartan deleted successfully' });
+        });
+    });
+
     return router;
 };
