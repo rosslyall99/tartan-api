@@ -6,7 +6,7 @@ const mysql = require('mysql2');
 const tartanRoutes = require('./routes/tartans');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Create MySQL connection pool
 const db = mysql.createPool({
