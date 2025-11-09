@@ -1,11 +1,11 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-app.use(cors());
 const mysql = require('mysql2');
 const tartanRoutes = require('./routes/tartans');
 
 const app = express();
+app.use(cors());
 const port = process.env.PORT || 3000;
 
 // Create MySQL connection pool
